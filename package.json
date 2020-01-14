@@ -1,0 +1,40 @@
+{
+  "name": "vue-elder-loader",
+  "version": "0.0.0-development",
+  "description": "Loader component for vue-elder",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no tests yet\"",
+    "semantic-release": "semantic-release"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ElderAS/vue-elder-loader.git"
+  },
+  "keywords": [
+    "vue",
+    "component",
+    "loader"
+  ],
+  "author": "carsten@elder.no",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ElderAS/vue-elder-loader/issues"
+  },
+  "homepage": "https://github.com/ElderAS/vue-elder-loader#readme",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.26",
+    "@fortawesome/free-solid-svg-icons": "^5.12.0",
+    "@fortawesome/vue-fontawesome": "^0.1.9"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2",
+    "semantic-release-cli": "^5.2.3",
+    "semantic-release": "^16.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
