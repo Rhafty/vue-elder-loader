@@ -82,7 +82,7 @@ export default {
     start() {
       this.reset()
 
-      if (!this.delay) this.isLoading = true
+      if (!this.content.delay) this.isLoading = true
       else this.timeout = setTimeout(() => (this.isLoading = true), this.content.delay)
     },
     stop(result) {
