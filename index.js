@@ -1,8 +1,10 @@
 import LoaderComponent from './src/component.vue'
 
 const Options = {
+  theme: 'default',
   icon: { icon: ['fas', 'circle-notch'], size: '2x' },
   message: 'Loading...',
+  delay: 0,
 }
 
 const install = Vue => {
