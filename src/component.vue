@@ -8,19 +8,31 @@
   >
     <slot v-if="showDefaultSlot" />
     <slot v-if="showSuccessSlot && content.theme === 'default'" name="success" />
-    <slot v-if="showErrorSlot && content.theme === 'default'" name="error" :error="error" />
+    <slot
+      v-if="showErrorSlot && content.theme === 'default'"
+      name="error"
+      :error="error"
+    />
 
     <div v-if="showLoaderElement" class="elder-loader__element">
       <div class="elder-loader__element-content">
         <div class="elder-loader__element-content-inner">
           <slot v-if="showSuccessSlot && content.theme === 'overlay'" name="success" />
-          <slot v-if="showErrorSlot && content.theme === 'overlay'" name="error" :error="error" />
-          <template v-if="isLoading">
-            <FontAwesomeIcon class="elder-loader__loading-icon" v-bind="content.icon" spin />
+          <slot
+            v-if="showErrorSlot && content.theme === 'overlay'"
+            name="error"
+            :error="error"
+          />
+          <slot name="loader" v-if="isLoading" :content="content">
+            <FontAwesomeIcon
+              class="elder-loader__loading-icon"
+              v-bind="content.icon"
+              spin
+            />
             <div class="elder-loader__loading-message">
               <slot name="message">{{ content.message }}</slot>
             </div>
-          </template>
+          </slot>
         </div>
       </div>
     </div>
