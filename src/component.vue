@@ -49,7 +49,7 @@
               spin
             />
             <div class="elder-loader__loading-message">
-              <slot name="message">{{ content.message }}</slot>
+              <slot name="message">{{ content.messages.loading }}</slot>
             </div>
           </slot>
         </div>

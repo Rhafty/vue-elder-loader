@@ -1,5 +1,7 @@
 <template>
-  <component :is="tag" v-bind="$attrs" v-html="content" />
+  <component :is="tag" v-bind="$attrs">
+    <span v-if="content" v-html="content"></span>
+  </component>
 </template>
 
 <script>
