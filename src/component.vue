@@ -7,22 +7,26 @@
     ]"
   >
     <slot v-if="showDefaultSlot" />
-    <slot v-if="showSuccessSlot && content.theme === 'default'" name="success" />
-    <slot
-      v-if="showErrorSlot && content.theme === 'default'"
-      name="error"
-      :error="error"
-    />
+    <slot v-if="showSuccessSlot && content.theme === 'default'" name="success">
+      <span v-html="content.messages.success"></span>
+    </slot>
+    <slot v-if="showErrorSlot && content.theme === 'default'" name="error" :error="error">
+      <span v-html="content.messages.error"></span
+    ></slot>
 
     <div v-if="showLoaderElement" class="elder-loader__element">
       <div class="elder-loader__element-content">
         <div class="elder-loader__element-content-inner">
-          <slot v-if="showSuccessSlot && content.theme === 'overlay'" name="success" />
+          <slot v-if="showSuccessSlot && content.theme === 'overlay'" name="success">
+            <span v-html="content.messages.success"></span>
+          </slot>
           <slot
             v-if="showErrorSlot && content.theme === 'overlay'"
             name="error"
             :error="error"
-          />
+          >
+            <span v-html="content.messages.error"></span>
+          </slot>
           <slot name="loader" v-if="isLoading" :content="content">
             <FontAwesomeIcon
               class="elder-loader__loading-icon"
@@ -117,17 +121,25 @@ export default {
       return this.showErrorSlot || this.showSuccessSlot
     },
     showSuccessSlot() {
-      return Boolean(this.state === 'success' && this.$slots.success)
+      return Boolean(
+        this.state === 'success' &&
+          (this.$slots.success || this.content.messages.success),
+      )
     },
     showErrorSlot() {
       return Boolean(
-        this.state === 'error' && (this.$slots.error || this.$scopedSlots.error),
+        this.state === 'error' &&
+          (this.$slots.error || this.$scopedSlots.error || this.content.messages.error),
       )
     },
     content() {
       return {
         icon: iconBinding(this.icon || Options.icon),
-        message: this.message || Options.message,
+        messages: {
+          loading: this.message || Options.messages.loading,
+          error: Options.messages.error,
+          success: Options.messages.success,
+        },
         theme: this.theme || Options.theme,
         delay: this.delay || Options.delay,
       }

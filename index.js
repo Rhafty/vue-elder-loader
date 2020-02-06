@@ -3,7 +3,11 @@ import LoaderComponent from './src/component.vue'
 const Options = {
   theme: 'default',
   icon: { icon: ['fas', 'circle-notch'], size: '2x' },
-  message: 'Loading...',
+  messages: {
+    loading: 'Loading...',
+    error: null,
+    success: null,
+  },
   delay: 0,
 }
 
