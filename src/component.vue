@@ -7,25 +7,40 @@
     ]"
   >
     <slot v-if="showDefaultSlot" />
-    <slot v-if="showSuccessSlot && content.theme === 'default'" name="success">
-      <span v-html="content.messages.success"></span>
+    <slot
+      v-if="showSuccessSlot && content.theme === 'default'"
+      name="success"
+      :reset="reset"
+    >
+      <SlotHandler :value="content.messages.success" :reset="reset" />
     </slot>
-    <slot v-if="showErrorSlot && content.theme === 'default'" name="error" :error="error">
-      <span v-html="content.messages.error"></span
-    ></slot>
+    <slot
+      v-if="showErrorSlot && content.theme === 'default'"
+      name="error"
+      :error="error"
+      :reset="reset"
+    >
+      <SlotHandler :value="content.messages.error" :reset="reset" :error="error" />
+      ></slot
+    >
 
     <div v-if="showLoaderElement" class="elder-loader__element">
       <div class="elder-loader__element-content">
         <div class="elder-loader__element-content-inner">
-          <slot v-if="showSuccessSlot && content.theme === 'overlay'" name="success">
-            <span v-html="content.messages.success"></span>
+          <slot
+            v-if="showSuccessSlot && content.theme === 'overlay'"
+            name="success"
+            :reset="reset"
+          >
+            <SlotHandler :value="content.messages.success" :reset="reset" />
           </slot>
           <slot
             v-if="showErrorSlot && content.theme === 'overlay'"
             name="error"
             :error="error"
+            :reset="reset"
           >
-            <span v-html="content.messages.error"></span>
+            <SlotHandler :value="content.messages.error" :reset="reset" :error="error" />
           </slot>
           <slot name="loader" v-if="isLoading" :content="content">
             <FontAwesomeIcon
@@ -47,6 +62,7 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { Options } from '../index'
 import { iconBinding } from './utils'
+import SlotHandler from './SlotHandler'
 import './icons'
 
 export default {
@@ -147,6 +163,7 @@ export default {
   },
   components: {
     FontAwesomeIcon,
+    SlotHandler,
   },
 }
 </script>
