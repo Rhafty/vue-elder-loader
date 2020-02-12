@@ -185,9 +185,7 @@ export default {
   &--overlay {
     position: relative;
 
-    .elder-loader__element,
-    .elder-loader__error,
-    .elder-loader__success {
+    & > .elder-loader__element {
       position: absolute;
       background-color: rgba(white, $vue-elder-loader-theme-overlay-transparency);
       width: 100%;
@@ -195,11 +193,11 @@ export default {
       top: 0;
       left: 0;
       z-index: 2;
-    }
 
-    .elder-loader__element-content-inner {
-      border: 1px solid $border-color;
-      background-color: white;
+      & > .elder-loader__element-content > .elder-loader__element-content-inner {
+        border: 1px solid $border-color;
+        background-color: white;
+      }
     }
   }
 
@@ -213,7 +211,7 @@ export default {
         min-width: 200px;
       }
 
-      .elder-loader--overlay & {
+      .elder-loader--overlay > .elder-loader__element > * {
         position: sticky;
         top: 0;
         height: 100%;
