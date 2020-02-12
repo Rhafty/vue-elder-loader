@@ -194,9 +194,20 @@ export default {
       left: 0;
       z-index: 2;
 
-      & > .elder-loader__element-content > .elder-loader__element-content-inner {
-        border: 1px solid $border-color;
-        background-color: white;
+      & > .elder-loader__element-content {
+        position: sticky;
+        top: 0;
+        height: 100%;
+        max-height: 95vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & > .elder-loader__element-content-inner {
+          border: 1px solid $border-color;
+          background-color: white;
+        }
       }
     }
   }
@@ -209,17 +220,6 @@ export default {
         margin: 2rem 0;
         padding: 1rem 2rem;
         min-width: 200px;
-      }
-
-      .elder-loader--overlay > .elder-loader__element > * {
-        position: sticky;
-        top: 0;
-        height: 100%;
-        max-height: 95vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
       }
     }
   }
