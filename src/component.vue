@@ -115,12 +115,15 @@ export default {
       this.reset()
 
       if (!this.content.delay) this.isLoading = true
-      else this.timeout = setTimeout(() => (this.isLoading = true), this.content.delay)
+      else {
+        this.timeout = clearTimeout(this.timeout)
+        this.timeout = setTimeout(() => (this.isLoading = true), this.content.delay)
+      }
     },
     stop(result) {
+      this.timeout = clearTimeout(this.timeout)
       this.state = result
       this.isLoading = false
-      this.timeout = clearTimeout(this.timeout)
     },
   },
   computed: {
