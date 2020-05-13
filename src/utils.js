@@ -5,6 +5,7 @@ function iconBinding(value) {
 }
 
 function isPromise(val) {
+  if (!val || typeof val !== 'object') return
   return typeof val.then === 'function' && typeof val.catch === 'function'
 }
 
