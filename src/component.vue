@@ -61,7 +61,7 @@
 <script>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { Options } from '../index'
-import { iconBinding } from './utils'
+import { iconBinding, isPromise } from './utils'
 import SlotHandler from './SlotHandler'
 import './icons'
 
@@ -87,12 +87,12 @@ export default {
   watch: {
     value: {
       handler(value) {
-        if (value instanceof Promise) {
+        if (isPromise(value)) {
           this.start()
 
           value
             .then(() => this.stop('success'))
-            .catch(err => {
+            .catch((err) => {
               this.error = err
               this.stop('error')
               throw err

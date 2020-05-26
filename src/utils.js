@@ -4,4 +4,9 @@ function iconBinding(value) {
   return value
 }
 
-export { iconBinding }
+function isPromise(val) {
+  if (!val || typeof val !== 'object') return
+  return typeof val.then === 'function' && typeof val.catch === 'function'
+}
+
+export { iconBinding, isPromise }
