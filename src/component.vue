@@ -176,6 +176,9 @@ export default {
 
 :root {
   @include GenerateVariables();
+
+  @include GenerateVariable('loader-animation-duration', 500ms);
+  @include GenerateVariable('loader-theme-overlay-transparency', 0.6);
 }
 
 .elder-loader {
@@ -194,7 +197,7 @@ export default {
 
     & > .elder-loader__element {
       position: absolute;
-      background-color: rgba(white, var(--vue-elder-loader-theme-overlay-transparency));
+      background-color: rgba(white, GetVariable('loader-theme-overlay-transparency'));
       width: 100%;
       height: 100%;
       top: 0;
@@ -212,7 +215,7 @@ export default {
         align-items: center;
 
         & > .elder-loader__element-content-inner {
-          border: 1px solid var(--vue-elder-border-color);
+          border: 1px solid GetVariable('border-color');
           background-color: white;
         }
       }
@@ -223,7 +226,7 @@ export default {
     &-content {
       &-inner {
         text-align: center;
-        border-radius: var(--vue-elder-border-radius);
+        border-radius: GetVariable('border-radius');
         margin: 2rem 0;
         padding: 1rem 2rem;
         min-width: 200px;
@@ -232,7 +235,7 @@ export default {
   }
 
   &__loading-icon {
-    color: var(--vue-elder-primary);
+    color: GetVariable('primary');
   }
 
   &__loading-message {
@@ -240,7 +243,7 @@ export default {
   }
 
   .fa-spin {
-    animation-duration: var(--vue-elder-loader-animation-duration);
+    animation-duration: GetVariable('loader-animation-duration');
   }
 }
 </style>

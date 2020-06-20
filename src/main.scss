@@ -24,8 +24,6 @@ $states: (
 @mixin GenerateVariables {
     @include GenerateVariable('border-radius', 3px);
     @include GenerateVariable('border-color', #eaeaea);
-    @include GenerateVariable('loader-animation-duration', 500ms);
-    @include GenerateVariable('loader-theme-overlay-transparency', 0.6);
 
   @each $state in $states {
     @include GenerateVariable(nth($state, 1), nth($state, 2));
