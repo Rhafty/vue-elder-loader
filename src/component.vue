@@ -92,7 +92,7 @@ export default {
 
           value
             .then(() => this.stop('success'))
-            .catch((err) => {
+            .catch(err => {
               this.error = err
               this.stop('error')
               throw err
@@ -172,9 +172,13 @@ export default {
 </script>
 
 <style lang="scss">
-.elder-loader {
-  @import './variables.scss';
+@import './main.scss';
 
+:root {
+  @include GenerateVariables();
+}
+
+.elder-loader {
   flex-grow: 1;
 
   &--default {
@@ -190,7 +194,7 @@ export default {
 
     & > .elder-loader__element {
       position: absolute;
-      background-color: rgba(white, $vue-elder-loader-theme-overlay-transparency);
+      background-color: rgba(white, var(--vue-elder-loader-theme-overlay-transparency));
       width: 100%;
       height: 100%;
       top: 0;
@@ -208,7 +212,7 @@ export default {
         align-items: center;
 
         & > .elder-loader__element-content-inner {
-          border: 1px solid $border-color;
+          border: 1px solid var(--vue-elder-border-color);
           background-color: white;
         }
       }
@@ -219,7 +223,7 @@ export default {
     &-content {
       &-inner {
         text-align: center;
-        border-radius: $border-radius;
+        border-radius: var(--vue-elder-border-radius);
         margin: 2rem 0;
         padding: 1rem 2rem;
         min-width: 200px;
@@ -228,7 +232,7 @@ export default {
   }
 
   &__loading-icon {
-    color: $primary;
+    color: var(--vue-elder-primary);
   }
 
   &__loading-message {
@@ -236,7 +240,7 @@ export default {
   }
 
   .fa-spin {
-    animation-duration: $vue-elder-loader-animation-duration;
+    animation-duration: var(--vue-elder-loader-animation-duration);
   }
 }
 </style>
