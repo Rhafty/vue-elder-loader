@@ -172,12 +172,14 @@ export default {
 </script>
 
 <style lang="scss">
-@import './main.scss';
+$variables: (
+  'primary': #3a9acd,
+  'border-radius': 3px,
+  'border-color': #eaeaea,
+);
 
-:root {
-  @include GenerateVariables();
-  @include GenerateVariable('loader-animation-duration', 500ms);
-  @include GenerateVariable('loader-theme-overlay-transparency', 0.6);
+@function GetVariable($key) {
+  @return var(--vue-elder-#{$key}, map-get($variables, $key));
 }
 
 .elder-loader {
