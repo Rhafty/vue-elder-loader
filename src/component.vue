@@ -176,7 +176,7 @@ $variables: (
   'primary': #3a9acd,
   'border-radius': 3px,
   'border-color': #eaeaea,
-  'oader-animation-duration': 500ms,
+  'loader-animation-duration': 500ms,
   'loader-theme-overlay-transparency': 0.6,
 );
 
