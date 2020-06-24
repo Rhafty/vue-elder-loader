@@ -92,7 +92,7 @@ export default {
 
           value
             .then(() => this.stop('success'))
-            .catch((err) => {
+            .catch(err => {
               this.error = err
               this.stop('error')
               throw err
@@ -172,16 +172,22 @@ export default {
 </script>
 
 <style lang="scss">
-.elder-loader {
-  @import './variables.scss';
+@import './main.scss';
 
+:root {
+  @include GenerateVariables();
+  @include GenerateVariable('loader-animation-duration', 500ms);
+  @include GenerateVariable('loader-theme-overlay-transparency', 0.6);
+}
+
+.elder-loader {
   flex-grow: 1;
 
   &--default {
     &.elder-loader--active {
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
   }
 
@@ -190,25 +196,29 @@ export default {
 
     & > .elder-loader__element {
       position: absolute;
-      background-color: rgba(white, $vue-elder-loader-theme-overlay-transparency);
-      width: 100%;
-      height: 100%;
+      z-index: 2;
       top: 0;
       left: 0;
-      z-index: 2;
+
+      width: 100%;
+      height: 100%;
+
+      background-color: rgba(white, GetVariable('loader-theme-overlay-transparency'));
 
       & > .elder-loader__element-content {
         position: sticky;
         top: 0;
-        height: 100%;
-        max-height: 95vh;
+
         display: flex;
+        align-items: center;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+
+        height: 100%;
+        max-height: 95vh;
 
         & > .elder-loader__element-content-inner {
-          border: 1px solid $border-color;
+          border: 1px solid GetVariable('border-color');
           background-color: white;
         }
       }
@@ -218,17 +228,19 @@ export default {
   &__element {
     &-content {
       &-inner {
-        text-align: center;
-        border-radius: $border-radius;
+        min-width: 200px;
         margin: 2rem 0;
         padding: 1rem 2rem;
-        min-width: 200px;
+
+        text-align: center;
+
+        border-radius: GetVariable('border-radius');
       }
     }
   }
 
   &__loading-icon {
-    color: $primary;
+    color: GetVariable('primary');
   }
 
   &__loading-message {
@@ -236,7 +248,7 @@ export default {
   }
 
   .fa-spin {
-    animation-duration: $vue-elder-loader-animation-duration;
+    animation-duration: GetVariable('loader-animation-duration');
   }
 }
 </style>
