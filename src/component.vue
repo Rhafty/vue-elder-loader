@@ -67,7 +67,7 @@ import './icons'
 
 export default {
   props: {
-    value: [Boolean, Promise],
+    value: null,
     theme: {
       type: String,
       enum: ['overlay', 'default'],
